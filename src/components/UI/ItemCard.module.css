@@ -1,0 +1,17 @@
+.itemCard {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  padding: 24px 0 24px 0;
+  height: auto;
+  width: 200px;
+  border-radius: 10px;
+  background: #fff;
+}
+
+@media (max-width: 714px) {
+  .itemCard {
+    width: 271px;
+    height: 264px;
+  }
+}

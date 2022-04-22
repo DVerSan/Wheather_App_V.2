@@ -1,0 +1,48 @@
+.cityList {
+  display: flex;
+  gap: 40px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.cityList div:last-child {
+  border-style: none;
+  padding-right: 0;
+}
+/* ------------ BUTTONS---------------------------------- */
+
+/* ---- Show Form Btn------- */
+
+.btnShowAddForm:hover,
+.btnShowAddForm:active {
+  color: #787e86;
+  border-radius: 50%;
+  border: solid 1px #858c95;
+}
+
+.btnShowAddForm:hover {
+  background-color: #858c951e;
+}
+
+.btnShowAddForm:active {
+  transform: scale(85%);
+  transition: all 0.3s ease-in-out;
+}
+
+.btnShowAddForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  width: 2rem;
+  height: 2rem;
+  top: 0.25rem;
+  right: 0.25rem;
+  font-size: 1.5rem;
+  background: none;
+  color: #949ca5;
+  border: none;
+  cursor: pointer;
+}

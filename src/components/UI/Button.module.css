@@ -1,0 +1,22 @@
+.btn {
+  text-align: center;
+  text-justify: center;
+  font: inherit;
+  border: 1px solid #609ee7;
+  border-radius: 5px;
+  color: white;
+  padding: 0.25rem 1rem;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background: #436fa2;
+  border-color: #609ee7;
+  transition: 500ms;
+}
+
+.btn:active {
+  background: #436fa2;
+  transform: scale(97%);
+  transition: ease-in-out;
+}

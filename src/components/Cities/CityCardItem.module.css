@@ -1,0 +1,126 @@
+.dataContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  font-family: sans-serif;
+  font-style: normal;
+  color: #609ee7;
+  text-align: center;
+  letter-spacing: 0em;
+}
+
+.dataContainer h1 {
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 21px;
+}
+
+.weather {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 17px;
+}
+
+.widgetContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  height: 137px;
+  width: 82px;
+  border-radius: 120px;
+  background-color: #609ee7;
+  align-self: center;
+  align-content: center;
+  margin: 24px 0px 24px 0px;
+  padding: 24px 0px 16px 0px;
+}
+
+.widgetTemp {
+  font-size: 26px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 31px;
+  letter-spacing: 0em;
+  text-align: center;
+  color: #fff;
+}
+
+.widgetIcon {
+  display: block;
+  margin: auto;
+  height: 50px;
+  width: 50px;
+}
+
+.cardLayout footer {
+  font-size: 14px;
+  gap: 12px;
+}
+
+/* ----------- Hide in Resp Version-------------------- */
+
+@media (min-width: 714px) {
+  .separator {
+    padding-right: 40px;
+    border-right: 1px dashed #609ee7;
+  }
+}
+
+@media (max-width: 714px) {
+  .hidden {
+    display: none;
+  }
+
+  .widgetContainer {
+    flex-direction: row;
+    align-items: center;
+    height: 82px;
+    width: 156px;
+    padding: 0px 16px 0px 24px;
+    margin: 52px 0px 28px 0px;
+  }
+}
+
+.errorMssg {
+  text-align: center;
+  color: red;
+  font-size: 1rem;
+}
+
+/* ------------------------- BUTTONS --------------------- */
+
+/* ------- Remove City btn---------- */
+
+.btnRemoveCity {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  width: 2rem;
+  height: 2rem;
+  top: -0.2rem;
+  right: 0.2rem;
+  font-size: 2rem;
+  background: none;
+  color: #a5979469;
+  border: none;
+  cursor: pointer;
+  z-index: 5;
+}
+
+.btnRemoveCity:hover,
+.btnRemoveCity:active {
+  color: #79271c;
+  border: none;
+}
+
+.btnRemoveCity:hover {
+  transition: all 0.3s ease-out;
+  transform: scale(120%);
+}
+
+.btnRemoveCity:active {
+  transform: scale(85%);
+  transition: all 0.3s ease-in-out;
+}

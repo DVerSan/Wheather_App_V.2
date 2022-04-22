@@ -1,0 +1,14 @@
+{
+  "userLoginData": [
+    {
+      "id": 1,
+      "name": "json-server",
+      "password": "typicode"
+    },
+    {
+      "name": "David Verdeguer",
+      "password": "232323232",
+      "id": 2
+    }
+  ]
+}
