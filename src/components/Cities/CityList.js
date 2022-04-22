@@ -1,13 +1,13 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import AuthContext from '../store/auth-context';
 import classes from './CityList.module.css';
 import CityCardItem from './CityCardItem';
 import MainCard from '../UI/MainCard';
-import SaveUserListBtn from '../UI/SaveUserListBtn';
 import AddCityForm from './AddCityForm';
 import { Splide, SplideSlide } from '@splidejs/react-splide';
 import '@splidejs/splide/dist/css/splide.min.css';
 import { useMediaQuery } from 'react-responsive';
+import * as firebaseApi from '../../lib/firebase-api';
 
 const CityList = (props) => {
   const authCtx = useContext(AuthContext);
@@ -42,6 +42,12 @@ const CityList = (props) => {
       setCities(newCities);
     }
   };
+
+  useEffect(() => {
+    if (isLoggedIn) {
+      firebaseApi.storeUserCitiesList(cities);
+    }
+  }, [cities, isLoggedIn]);
 
   // ------------- Rendering CityCardItem list ---------------
 
@@ -97,14 +103,23 @@ const CityList = (props) => {
         <section>
           <MainCard>
             {(isLoggedIn || cities.length < 1) && (
-              <button
-                className={classes.btnShowAddForm}
-                onClick={() => {
-                  setShowForm(true);
-                }}
-              >
-                +
-              </button>
+              <>
+                {cities.length === 0 && (
+                  <p className="text-slate-500">
+                    Click
+                    <span className="text-2xl"> + </span> button to add cities
+                  </p>
+                )}
+
+                <button
+                  className={classes.btnShowAddForm}
+                  onClick={() => {
+                    setShowForm(true);
+                  }}
+                >
+                  +
+                </button>
+              </>
             )}
             <div className={classes.cityList}>
               <Splide
@@ -128,9 +143,6 @@ const CityList = (props) => {
           </MainCard>
           <button></button>
         </section>
-      )}
-      {isLoggedIn && cities.length > 0 && (
-        <SaveUserListBtn cities={cities}>Save Cities</SaveUserListBtn>
       )}
     </div>
   );

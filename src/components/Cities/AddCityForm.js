@@ -5,10 +5,9 @@ function AddCityForm(props) {
   const { onAddCity, onCloseClicked } = props;
   const cityName = useRef('');
 
-  const closeModalHandler = () => onCloseClicked(false);
-
   const submitHandler = (event) => {
     event.preventDefault();
+
     onAddCity(cityName.current.value);
 
     onCloseClicked(false);
@@ -17,14 +16,17 @@ function AddCityForm(props) {
   return (
     <section>
       <div>
-        <div className={classes.backdrop} onClick={closeModalHandler}></div>
+        <div
+          className={classes.backdrop}
+          onClick={() => onCloseClicked(false)}
+        ></div>
       </div>
       <div className={classes.modal}>
         <form onSubmit={submitHandler}>
           <div className={classes.container}>
             <button
               className={classes.closeFormBtn}
-              onClick={closeModalHandler}
+              onClick={() => onCloseClicked(false)}
             >
               X
             </button>
