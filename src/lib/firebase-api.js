@@ -27,17 +27,18 @@ export async function authUser(authFirebaseObjec) {
 
 // --------------  POST Request to store user cities list in Firebase  -----------------
 
-export async function storeUserCitiesList(userDataObject) {
-  fetch(
-    'https://weather-app-2049c-default-rtdb.europe-west1.firebasedatabase.app/user.json',
-    {
-      method: 'POST',
-      body: JSON.stringify(userDataObject),
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    }
-  ).then((res) => {
+export async function postUserCitiesList(userDataObject) {
+  const { idToken, uid, cities } = userDataObject;
+
+  const url = `https://weather-app-2049c-default-rtdb.europe-west1.firebasedatabase.app/users/${uid}.json?auth=${idToken}`;
+
+  fetch(url, {
+    method: 'PUT',
+    body: JSON.stringify({ cities }),
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  }).then((res) => {
     if (res.ok) {
       return alert('Your list has been saved');
     } else {

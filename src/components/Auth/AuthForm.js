@@ -31,6 +31,7 @@ const AuthForm = () => {
 
   const handleSubmit = (formDataObject) => {
     const { email } = formDataObject;
+    console.log(formDataObject);
     setIsLoading(true);
 
     let url;
@@ -51,7 +52,9 @@ const AuthForm = () => {
       },
     })
       .then((res) => {
+        console.log(res);
         setIsLoading(false);
+        console.log(res);
         if (res.ok) {
           return res.json();
         } else {
@@ -65,7 +68,7 @@ const AuthForm = () => {
         const expirationTime = new Date(
           new Date().getTime() + +data.expiresIn * 1000
         );
-        authCtx.login(data.idToken, expirationTime.toISOString());
+        authCtx.login(data.idToken, expirationTime.toISOString(), data.localId);
         history.replace('/profile');
       })
       .catch((err) => {
@@ -89,7 +92,6 @@ const AuthForm = () => {
           // ----- Needed to Firebase Athentication -------
           returnSecureToken: true,
           // -------------------------------------------------
-          cityList: '',
         }}
         onSubmit={async (inputValues, { resetForm }) => {
           await handleSubmit(inputValues);
