@@ -1,9 +1,9 @@
-import HomePage from './components/Pages/HomePage';
-import UserCityListPage from './components/Pages/UserCityListPage';
+import HomePage from './components/pages/HomePage';
+import UserCityListPage from './components/pages/UserCityListPage';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import { useContext } from 'react';
-import PageLayout from './components/Layout/PageLayout';
-import AuthPage from './components/Pages/AuthPage';
+import PageLayout from './components/layout/PageLayout';
+import AuthPage from './components/pages/AuthPage';
 import AuthContext from './components/store/auth-context';
 
 function App() {

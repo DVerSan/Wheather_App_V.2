@@ -1,5 +1,5 @@
 import classes from './UserCityListPage.module.css';
-import CityList from '../Cities/CityList';
+import CityList from '../cities/CityList';
 
 const UserCityListPage = (props) => {
   return (

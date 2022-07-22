@@ -19,14 +19,9 @@ const AuthForm = () => {
   //---------- Validation Form via Yup Objec-Schema ---------------------
 
   const userLoginSchema = Yup.object().shape({
-    email: Yup.string()
-      .email('Please enter a valid email')
-      .required('Please enter a email'),
+    email: Yup.string().email('Please enter a valid email').required('Please enter a email'),
     password: Yup.string().required('Password is required'),
-    passwordConfirmation: Yup.string().oneOf(
-      [Yup.ref('password'), null],
-      'Passwords must match'
-    ),
+    passwordConfirmation: Yup.string().oneOf([Yup.ref('password'), null], 'Passwords must match'),
   });
 
   const handleSubmit = (formDataObject) => {
@@ -62,10 +57,8 @@ const AuthForm = () => {
         }
       })
       .then((data) => {
-        const expirationTime = new Date(
-          new Date().getTime() + +data.expiresIn * 1000
-        );
-        authCtx.login(data.idToken, expirationTime.toISOString());
+        const expirationTime = new Date(new Date().getTime() + +data.expiresIn * 1000);
+        authCtx.login(data.idToken, expirationTime.toISOString(), data.localId);
         history.replace('/profile');
       })
       .catch((err) => {
@@ -89,10 +82,9 @@ const AuthForm = () => {
           // ----- Needed to Firebase Athentication -------
           returnSecureToken: true,
           // -------------------------------------------------
-          cityList: '',
         }}
         onSubmit={async (inputValues, { resetForm }) => {
-          await handleSubmit(inputValues);
+          handleSubmit(inputValues);
           resetForm();
         }}
         validationSchema={userLoginSchema}
@@ -130,9 +122,7 @@ const AuthForm = () => {
                       name="password"
                     />
                     {errors.password && touched.password ? (
-                      <div className="text-red-500 bg-red">
-                        {errors.password}
-                      </div>
+                      <div className="text-red-500 bg-red">{errors.password}</div>
                     ) : null}
                   </div>
                   <input
@@ -145,9 +135,7 @@ const AuthForm = () => {
                     className="mt-5 text-cta-btns text-sm bg-none w-full text-center hover:text-cta-btns-hov transition-all"
                     onClick={switchAuthModeHandler}
                   >
-                    {isLogin
-                      ? 'Create new account'
-                      : 'Login with existing account'}
+                    {isLogin ? 'Create new account' : 'Login with existing account'}
                   </button>
                 </Form>
               )}

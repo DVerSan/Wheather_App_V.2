@@ -3,7 +3,6 @@ import AuthContext from '../store/auth-context';
 import classes from './CityList.module.css';
 import CityCardItem from './CityCardItem';
 import MainCard from '../UI/MainCard';
-// import SaveUserListBtn from '../UI/SaveUserListBtn';
 import AddCityForm from './AddCityForm';
 import { Splide, SplideSlide } from '@splidejs/react-splide';
 import '@splidejs/splide/dist/css/splide.min.css';
@@ -13,6 +12,8 @@ import * as firebaseApi from '../../lib/firebase-api';
 const CityList = (props) => {
   const authCtx = useContext(AuthContext);
   const isLoggedIn = authCtx.isLoggedIn;
+  const idToken = authCtx.token;
+  const uid = localStorage.getItem('uid');
 
   const [cities, setCities] = useState(
     isLoggedIn ? ['Valencia'] : [props.qSearchCityName]
@@ -45,10 +46,12 @@ const CityList = (props) => {
   };
 
   useEffect(() => {
+    const userDataObject = { idToken, uid, cities };
+
     if (isLoggedIn) {
-      firebaseApi.storeUserCitiesList(cities);
+      firebaseApi.postUserCitiesList(userDataObject);
     }
-  }, [cities, isLoggedIn]);
+  }, [cities, isLoggedIn, idToken, uid]);
 
   // ------------- Rendering CityCardItem list ---------------
 
@@ -145,9 +148,6 @@ const CityList = (props) => {
           <button></button>
         </section>
       )}
-      {/* {isLoggedIn && cities.length > 0 && (
-        <SaveUserListBtn cities={cities}>Save Cities</SaveUserListBtn>
-      )} */}
     </div>
   );
 };

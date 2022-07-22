@@ -7,6 +7,7 @@
   justify-content: space-between;
   align-items: center;
   background-color: #355982;
+  z-index: 10;
 }
 
 .logo {

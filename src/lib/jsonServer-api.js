@@ -16,8 +16,6 @@ export async function postUserLogin(userLoginData) {
         'Content-Type': 'application/json',
       },
     });
-
-    console.log(response);
   } catch (error) {
     console.log(error);
   }
@@ -30,8 +28,6 @@ export async function usersLoginDataList() {
     const url = 'http://localhost:4000/userLoginData';
     const response = await fetch(url);
     const result = await response.jason;
-
-    console.log(result);
 
     if (!result.ok) {
       throw new Error('🚨 Something went wrong!');

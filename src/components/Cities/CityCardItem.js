@@ -19,7 +19,6 @@ const CityCardItem = (props) => {
   }, [cityName]);
 
   const weatherIcon = `http://openweathermap.org/img/wn/${cityData?.weather[0].icon}.png`;
-  // ------------ Loading & Error Logic ---------------------------------------------
 
   if (isLoading) {
     return <Spinner />;
@@ -33,27 +32,18 @@ const CityCardItem = (props) => {
     );
   }
 
-  // -----------------------------------------------------------------------------------
-
   return (
     <div key={cityData.id} className={classes.separator}>
       <ItemCard className={classes.respContainer}>
-        <button
-          className={classes.btnRemoveCity}
-          onClick={() => onRemoveClicked(cityName)}
-        >
+        <button className={classes.btnRemoveCity} onClick={() => onRemoveClicked(cityName)}>
           -
         </button>
         <header className={classes.dataContainer}>
           <h1>{cityData.name}</h1>
-          <div className={classes.weather}>
-            {cityData.weather[0].description}
-          </div>
+          <div className={classes.weather}>{cityData.weather[0].description}</div>
         </header>
         <div className={classes.widgetContainer}>
-          <div className={classes.widgetTemp}>{`${Math.round(
-            cityData.main.temp
-          )}º`}</div>
+          <div className={classes.widgetTemp}>{`${Math.round(cityData.main.temp)}º`}</div>
           <img
             className={classes.widgetIcon}
             src={weatherIcon}
