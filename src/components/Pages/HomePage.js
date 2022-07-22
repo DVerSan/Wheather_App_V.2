@@ -1,7 +1,7 @@
 import { useContext, useRef, useState } from 'react';
-import classes from '../Pages/HomePage.module.css';
+import classes from '../pages/HomePage.module.css';
 import AuthContext from '../store/auth-context';
-import CityList from '../Cities/CityList';
+import CityList from '../cities/CityList';
 
 const HomePage = () => {
   const [ShowQsearchForm, setShowQsearchForm] = useState(true);
@@ -28,7 +28,7 @@ const HomePage = () => {
     <main className={classes.background}>
       {!userIsLoged && ShowQsearchForm && !qScityName && (
         <section className={classes.main}>
-          <p>LETS FIND THE SUNSHINE WHEREVER IT IS...</p>
+          <p>LET'S FIND THE WEATHER ANYWHERE...</p>
           <form className={classes.nav} onSubmit={submitHandler}>
             <input
               className="mt-2 block w-full p-3 bg-gray-50 rounded-md"
@@ -43,10 +43,7 @@ const HomePage = () => {
       )}
       {!userIsLoged && !ShowQsearchForm && qScityName && (
         <section className={`${classes.main} ${classes.backdrop} `}>
-          <CityList
-            qSearchCityName={qScityName}
-            showQserchForm={showQserchFormHandler}
-          />
+          <CityList qSearchCityName={qScityName} showQserchForm={showQserchFormHandler} />
         </section>
       )}
     </main>

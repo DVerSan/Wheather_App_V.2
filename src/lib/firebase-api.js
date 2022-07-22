@@ -39,9 +39,7 @@ export async function postUserCitiesList(userDataObject) {
       'Content-Type': 'application/json',
     },
   }).then((res) => {
-    if (res.ok) {
-      return alert('Your list has been saved');
-    } else {
+    if (!res.ok) {
       return res.json().then((data) => {
         let errorMssg = 'Data can´t be stored. Please, try again';
         if (data && data.error && data.error.message) {

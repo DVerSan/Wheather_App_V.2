@@ -1,9 +1,7 @@
 .background {
   height: 100vh;
   width: 100%;
-
-  background-image: url(/Users/davidverdeguersantolaria/Documents/react/projects/Wheather_App/src/assets/skyBackground.jpg);
-
+  background-image: url(../../assets/skyBackground.jpg);
   background-position: center;
   background-size: cover;
 }
@@ -30,8 +28,8 @@
 
 .main p {
   color: #355982;
-  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande',
-    'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva,
+    Verdana, sans-serif;
 }
 
 .nav {

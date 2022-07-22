@@ -1,5 +1,5 @@
-import AuthForm from '../Auth/AuthForm';
-import classes from '../Pages/HomePage.module.css';
+import AuthForm from '../auth/AuthForm';
+import classes from '../pages/HomePage.module.css';
 
 const AuthPage = (props) => {
   return (
